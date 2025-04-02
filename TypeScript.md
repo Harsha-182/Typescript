@@ -52,5 +52,68 @@ TypeScript is an **open-source programming language** developed by **Microsoft**
    tsc --init
    ```
 
+## First TypeScript Program
+1. **Create a TypeScript File:**
+   Create a file named `index.ts` and add the following code:
+   
+   ```typescript
+   let message: string = "Hello, TypeScript!";
+   console.log(message);
+   export {};
+   ```
+
+2. **Compile the TypeScript Code:**
+   ```sh
+   tsc index.ts
+   ```
+   This will generate a JavaScript file `index.js`.
+
+3. **Run the JavaScript File:**
+   ```sh
+   node index.js
+   ```
+   **Expected Output:**
+   ```
+   Hello, TypeScript!
+   ```
+
+## Fixing "Cannot Redeclare Block-Scoped Variable" Error
+If you encounter an error stating **"Cannot redeclare block-scoped variable 'message'"**, it happens because TypeScript treats each file as a separate module unless specified otherwise.
+
+### **Solutions:**
+1. **Use Unique Variable Names:**
+   ```typescript
+   let message1: string = "Hello, TypeScript!";
+   console.log(message1);
+   ```
+
+2. **Encapsulate in a Function or Block Scope:**
+   ```typescript
+   function run() {
+       let message: string = "Hello, TypeScript!";
+       console.log(message);
+   }
+   run();
+   ```
+
+3. **Use ES Modules (`export {}`)**
+   - If working with multiple files, add `export {}` to indicate a module scope.
+   - This prevents global variable redeclaration errors.
+   
+   ```typescript
+   let message: string = "Hello, TypeScript!";
+   console.log(message);
+   export {};
+   ```
+
+## Using `--watch` for Automatic Compilation
+To watch for changes and automatically recompile, use the `--watch` flag:
+
+```sh
+   tsc --watch
+```
+
+This will monitor your TypeScript files and recompile them whenever you make changes, improving development efficiency.
+
 ## Conclusion
 TypeScript bridges the gap between JavaScript's flexibility and the safety of a strongly typed language. It is becoming the **standard for modern web development** and is an essential skill for JavaScript developers.
